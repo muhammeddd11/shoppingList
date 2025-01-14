@@ -4,9 +4,16 @@ import "./App.css";
 function App() {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState("");
+
   function saveItem(e) {
     e.preventDefault();
+    if (item === "") return;
     const newItems = [...items, item];
+    setItems(newItems);
+    setItem("");
+  }
+  function removeItem(item) {
+    const newItems = items.filter((it) => it !== item);
     setItems(newItems);
   }
   return (
@@ -20,6 +27,7 @@ function App() {
           <input
             placeholder="Add a new item"
             onChange={(e) => setItem(e.target.value)}
+            value={item}
           ></input>
           <button name="item" type="submit" onClick={(e) => saveItem(e)}>
             Add
@@ -28,8 +36,8 @@ function App() {
         <div className="items">
           {items.map((item, i) => (
             <div className="item" key={i}>
-              <p>{item}</p>
-              <button>
+              <p className="item-place">{item}</p>
+              <button onClick={() => removeItem(item)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="#fa5252"

@@ -32,6 +32,7 @@ form input{
 }
 form button{
   padding:5px 10px;
+  
 
 }
 form{
@@ -40,6 +41,8 @@ form{
 }
 .items button{
   border:none;
+  cursor: pointer;
+  background-color: #e9ecef;
 }
 .item{
   display:flex;
